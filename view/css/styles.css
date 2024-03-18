@@ -20,11 +20,10 @@
 }
 
 .fondoLogin {
-    background-image: url('../images/punitaqui.webp'); /* Cambia 'ruta/a/la/imagen.jpg' por la ruta de tu imagen */
+    background-image: url('../images/punitaqui.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Esto asegura que la imagen de fondo permanezca fija mientras se desplaza por la página */
-        
+    background-attachment: fixed;
 }
 
 .custom-color{
@@ -46,3 +45,7 @@
     border: 1px solid #ced4da;
 }
 
+.fila-orden:hover {
+    background-color: #E2E2E2;
+    cursor: pointer;
+}

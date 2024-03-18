@@ -39,9 +39,9 @@ class ordenTrabajo{
 
         $stmt->close();
         $conn->close();
-     }
+    }
 
-     public function mostrarEscuelas(){
+    public function mostrarEscuelas(){
         $db = new DB();
         $conn = $db->connect();
 
@@ -50,9 +50,9 @@ class ordenTrabajo{
         $result = $conn->query($sql);
 
         return $result;
-     }
+    }
 
-     public function mostrarTabla() {
+    public function mostrarTabla() {
         $db = new DB();
         $conn = $db->connect();
     
@@ -97,6 +97,40 @@ class ordenTrabajo{
 
         return $ordenes;
     }
+    public function busquedaOrdenes($query){
+        $db = new DB();
+        $conn = $db->connect();
+    
+        $query = $conn->real_escape_string($query);
+    
+        $sql = "SELECT id_orden, orden_trabajo.numero_orden as 'Numero_de_orden', orden_trabajo.fecha as 'Fecha', orden_trabajo.descripcion as 'Descripcion', usuarios.nombre_usuario as 'Responsable', establecimientos.nombre as 'Establecimiento' FROM orden_trabajo INNER JOIN usuarios ON orden_trabajo.responsable = usuarios.id_usuario INNER JOIN establecimientos ON orden_trabajo.establecimiento = establecimientos.id_establecimiento WHERE Numero_de_orden LIKE '%$query%'";
+    
+        $result = $conn->query($sql);
+    
+        if ($result) {
+            $resultados = [];
+            // Recorrer los resultados y guardarlos en un array
+            while ($fila = $result->fetch_assoc()) {
+                $resultado = array(
+                    'id_orden' => $fila['id_orden'],
+                    'Numero_de_orden' => $fila['Numero_de_orden'],
+                    'Fecha' => $fila['Fecha'],
+                    'Descripcion' => $fila['Descripcion'],
+                    'Responsable' => $fila['Responsable'],
+                    'Establecimiento' => $fila['Establecimiento']
+                );
+                // Agrega el resultado al array de resultados
+                $resultados[] = $resultado;
+            }            
+            $conn->close();
+            return $resultados;
+        } else {
+            $conn->close();
+            return [];
+        }
+    }
+    
+    
     
     
 }

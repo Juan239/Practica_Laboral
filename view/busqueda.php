@@ -50,18 +50,21 @@
   </header>
   
     
-  <div class="container mt-5">
+  <div class="container mt-5">  
     <div class="row justify-content-center">
-        <div class="col-md-12"> <!-- Cambiado a col-md-12 para ocupar todo el ancho -->
+        <div class="col-md-12">
             <h2 class="text-center">Buscar un informe específico</h2><br>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Ingresa el número de orden">
+                <input type="text" class="form-control" id="searchInput" placeholder="Ingresa el número de orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton"></div>
             </div>
+            <div id="resultsContainer"></div>
         </div>
     </div>
-    </div>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/busquedas.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
