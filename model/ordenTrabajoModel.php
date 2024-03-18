@@ -56,9 +56,14 @@ class ordenTrabajo{
         $db = new DB();
         $conn = $db->connect();
     
-        $sql = 'SELECT orden_trabajo.numero_orden as "Numero_de_orden", orden_trabajo.fecha as "Fecha", orden_trabajo.descripcion as "Descripcion", orden_trabajo.observaciones as "Observaciones", usuarios.nombre_usuario as "Responsable", establecimientos.nombre as "Establecimiento", intervenciones.nombre as "Intervencion" FROM (((orden_trabajo INNER JOIN usuarios ON orden_trabajo.responsable = usuarios.id_usuario) INNER JOIN establecimientos ON orden_trabajo.establecimiento = establecimientos.id_establecimiento) INNER JOIN intervenciones ON orden_trabajo.intervencion = intervenciones.id_intervencion)';
+        $sql = 'SELECT id_orden, orden_trabajo.numero_orden as "Numero_de_orden", orden_trabajo.fecha as "Fecha", orden_trabajo.descripcion as "Descripcion", orden_trabajo.observaciones as "Observaciones", usuarios.nombre_usuario as "Responsable", establecimientos.nombre as "Establecimiento", intervenciones.nombre as "Intervencion" FROM (((orden_trabajo INNER JOIN usuarios ON orden_trabajo.responsable = usuarios.id_usuario) INNER JOIN establecimientos ON orden_trabajo.establecimiento = establecimientos.id_establecimiento) INNER JOIN intervenciones ON orden_trabajo.intervencion = intervenciones.id_intervencion) ORDER BY id_orden DESC';
         $result = $conn->query($sql);
     
+        $ordenes = [];
+        while ($row = $result->fetch_assoc()) {
+            $ordenes[] = $row;
+        }
+        /*
         echo '<div class="table-responsive">';
         echo '<table class="table table-hover">';
         echo '<thead class="thead-light">';
@@ -86,9 +91,11 @@ class ordenTrabajo{
         }
         echo '</tbody>';
         echo '</table>';
-        echo '</div>';
+        echo '</div>'; */
     
         $conn->close();
+
+        return $ordenes;
     }
     
     

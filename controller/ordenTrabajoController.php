@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST["descripcion"];
     $observaciones = $_POST["observaciones"];
     $responsable = $nombreUsuario;
-    $establecimiento = "1";
+    $establecimiento = $_POST["id_establecimiento"];
     $intervencion = $_POST["intervencion"];
 
     $ordenTrabajo = new ordenTrabajo($numeroOrden, $fecha, $descripcion, $observaciones, $responsable, $establecimiento, $intervencion);

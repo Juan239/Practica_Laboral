@@ -1,6 +1,8 @@
-function selectOption(option) {
-    document.getElementById("dropdownEstablecimiento").innerHTML = option;
+function selectOption(id, nombre) {
+    document.getElementById("id_establecimiento").value = id;
+    document.getElementById("nombre_establecimiento_seleccionado").innerText = nombre;
 }
+
 
 function actualizarTextArea(textarea) {
     textarea.style.height = 'auto'; 

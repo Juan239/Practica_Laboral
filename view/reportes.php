@@ -50,6 +50,8 @@
 </nav>
   </header>
   
+
+  <!--
   <div class="container-fluid mt-4">
     <div class="row justify-content-center"> 
         <div class="col-md-11"> 
@@ -60,7 +62,72 @@
             ?>
         </div>
     </div>
+</div>-->
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center"> 
+        <div class="col-md-11"> 
+            <h2>Ordenes de trabajo</h2><br>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" style="width: 10%">Número de Orden</th>
+                            <th scope="col" style="width: 10%">Fecha</th>
+                            <th scope="col" style="width: 25%">Descripción</th>
+                            <th scope="col" style="width: 20%">Observaciones</th>
+                            <th scope="col" style="width: 10%">Responsable</th>
+                            <th scope="col" style="width: 15%">Establecimiento</th>
+                            <th scope="col" style="width: 10%">Intervención</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $ordenTrabajo = new ordenTrabajo("","","","","","","");
+                            $ordenes = $ordenTrabajo->mostrarTabla();
+
+                            // Paginación
+                            $resultados_por_pagina = 8; // Número de resultados por página
+                            $numero_paginas = ceil(count($ordenes) / $resultados_por_pagina);
+
+                            if (!isset($_GET['pagina'])) {
+                                $pagina = 1;
+                            } else {
+                                $pagina = $_GET['pagina'];
+                            }
+
+                            $indice_inicio = ($pagina - 1) * $resultados_por_pagina;
+                            $indice_fin = $pagina * $resultados_por_pagina;
+
+                            for ($i = $indice_inicio; $i < $indice_fin && $i < count($ordenes); $i++) {
+                                $orden = $ordenes[$i];
+                                echo '<tr>';
+                                echo '<td>' . $orden['Numero_de_orden'] . '</td>';
+                                echo '<td>' . $orden['Fecha'] . '</td>';
+                                echo '<td>' . $orden['Descripcion'] . '</td>';
+                                echo '<td>' . $orden['Observaciones'] . '</td>';
+                                echo '<td>' . $orden['Responsable'] . '</td>';
+                                echo '<td>' . $orden['Establecimiento'] . '</td>';
+                                echo '<td>' . $orden['Intervencion'] . '</td>';
+                                echo '</tr>';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Paginación -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php for ($pagina = 1; $pagina <= $numero_paginas; $pagina++): ?>
+                        <li class="page-item <?php echo ($_GET['pagina'] ?? 1) == $pagina ? 'active' : ''; ?>"><a class="page-link" href="?pagina=<?php echo $pagina; ?>"><?php echo $pagina; ?></a></li>
+                    <?php endfor; ?>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
+
 
 
 

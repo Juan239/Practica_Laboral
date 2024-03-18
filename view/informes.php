@@ -54,19 +54,10 @@
   <br>
 
   <form  method="post" action="../controller/ordenTrabajoController.php" class="formulario">    
-      <!--Dropdown con el tipo de informe-->
-      <div class="dropdown">
-        <label for="dropdownTipoInforme">Seleccione el tipo de informe</label>
-        <button id="dropdownTipoInforme" class="btn dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
-            <span>Seleccione el tipo de informe</span>
-            <span class="ml-auto">
-                <i class="fas fa-chevron-down"></i>
-            </span>
-        </button>
-        <div class="dropdown-menu" style="width: 100%;">
-          <!-- Hay que cambiar esto, a lo mejor se elimina si es que me dan otros tipos de informes-->
+      <!--Titulo orden de trabajo-->
+        <div class="text-center">
+          <h2>Orden de trabajo</h2>
         </div>
-      </div>
         <br>
         
         <!--Input del numero de orden-->
@@ -83,26 +74,26 @@
     
         <!--Input del establecimiento-->
         <!--Luego hay que cambiarlo a un dropdown con los establecimientos que esten en la base de datos-->
+        <input type="hidden" name="id_establecimiento" id="id_establecimiento">
         <div class="dropdown">
-        <label for="dropdownEstablecimiento">Seleccione el establecimiento</label>
-        <button id="dropdownEstablecimiento" class="btn dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
-            <span>Seleccione el establecimiento</span>
-            <span class="ml-auto">
-                <i class="fas fa-chevron-down"></i>
-            </span>
-        </button>
-        <div class="dropdown-menu" style="width: 100%;">
-          <?php
-
-          $ordentrabajo = new ordenTrabajo("","","","","","","");
-          $result = $ordentrabajo->mostrarEscuelas();
-          // Aquí colocamos el bucle while para iterar sobre los datos y generar las opciones del dropdown
-          while ($row = $result->fetch_assoc()) {
-              echo '<button class="dropdown-item" type="button" onclick="selectOption(\'' . $row["nombre"] . '\')">' . $row["nombre"] . '</button>';
-          }
-          ?>
+            <label for="dropdownEstablecimiento">Seleccione el establecimiento</label>
+            <button id="dropdownEstablecimiento" class="btn dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+                <span id="nombre_establecimiento_seleccionado">Seleccione el establecimiento</span>
+                <span class="ml-auto">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </button>
+            <div class="dropdown-menu" style="width: 100%;">
+                <?php
+                $ordentrabajo = new ordenTrabajo("","","","","","","");
+                $result = $ordentrabajo->mostrarEscuelas();
+                // Aquí colocamos el bucle while para iterar sobre los datos y generar las opciones del dropdown
+                while ($row = $result->fetch_assoc()) {
+                    echo '<button class="dropdown-item" type="button" value="' . $row["id_establecimiento"] . '" onclick="selectOption(\'' . $row["id_establecimiento"] . '\', \'' . $row["nombre"] . '\')">' . $row["nombre"] . '</button>';
+                }
+                ?>
+            </div>
         </div>
-      </div>
           <br>
         <!--Input de la intervencion-->
         <div class="form-group">
@@ -143,7 +134,7 @@
         <!--Input de la descripcion-->
         <div class="form-group">
           <label for="inputDescripcionProblema">Descripción del problema</label>
-          <textarea class="form-control" name="descripcion" id="inputDescripcionProblema" rows="4" oninput="actualizarTextArea(this)" placeholder="Describa el problema" style="resize: none; overflow-y: hidden;"></textarea>
+          <textarea class="form-control" name="descripcion" id="inputDescripcionProblema" rows="3" oninput="actualizarTextArea(this)" placeholder="Describa el problema" style="resize: none; overflow-y: hidden;"></textarea>
         </div>
       
         <!--Input de las observaciones-->
@@ -154,7 +145,9 @@
         <br>
 
         <!--Boton guardar informe-->
-        <button type="submit" name="btnGuardarInforme" class="btn btn-primary">Guardar</button>
+        <div class="d-flex justify-content-center">
+        <button type="submit" name="btnGuardarInforme" class="btn btn-primary" style="width: 200px;">Guardar</button>
+    </div>
   </form>
 
 
