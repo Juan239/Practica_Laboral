@@ -11,7 +11,6 @@ if (isset($_SESSION["nombre_usuario"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $numeroOrden = $_POST["numeroOrden"];
     $fecha = $_POST["fecha"];
     $descripcion = $_POST["descripcion"];
     $observaciones = $_POST["observaciones"];
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $establecimiento = $_POST["id_establecimiento"];
     $intervencion = $_POST["intervencion"];
 
-    $ordenTrabajo = new ordenTrabajo($numeroOrden, $fecha, $descripcion, $observaciones, $responsable, $establecimiento, $intervencion);
+    $ordenTrabajo = new ordenTrabajo($fecha, $descripcion, $observaciones, $responsable, $establecimiento, $intervencion);
 
     if ($ordenTrabajo->registrarOrden()) {
         header("Location: ../view/informes.php");

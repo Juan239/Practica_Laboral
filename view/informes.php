@@ -60,11 +60,11 @@
         </div>
         <br>
         
-        <!--Input del numero de orden-->
+        <!--Input del numero de orden      Este quedaria eliminado porque se cambio a AUTO_INCREMENT en la base de datos
         <div class="form-group">
           <label for="inputNumeroOrden">Número de orden</label>
           <input type="text" class="form-control" id="inputNumeroOrden" name="numeroOrden" placeholder="Ingrese el número de orden">
-        </div>
+        </div>-->
        
         <!--Input de la fecha-->
         <div class="form-group">
@@ -89,7 +89,8 @@
                 $result = $ordentrabajo->mostrarEscuelas();
                 // Aquí colocamos el bucle while para iterar sobre los datos y generar las opciones del dropdown
                 while ($row = $result->fetch_assoc()) {
-                    echo '<button class="dropdown-item" type="button" value="' . $row["id_establecimiento"] . '" onclick="selectOption(\'' . $row["id_establecimiento"] . '\', \'' . $row["nombre"] . '\')">' . $row["nombre"] . '</button>';
+                  //Recordar que si se cambia de BD hay que cambiar los valores de aca por como salen en la BD
+                    echo '<button class="dropdown-item" type="button" value="' . $row["est_id"] . '" onclick="selectOption(\'' . $row["est_id"] . '\', \'' . $row["est_nombre"] . '\')">' . $row["est_nombre"] . '</button>';
                 }
                 ?>
             </div>

@@ -56,12 +56,13 @@
             <h2 class="text-center">Buscar un informe específico</h2><br>
             <div class="input-group">
                 <input type="text" class="form-control" id="searchInput" placeholder="Ingresa el número de orden" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton"></div>
+                <div class="dropdown-menu w-100" id="dropdownMenu" aria-labelledby="dropdownMenuButton"></div>
             </div>
             <div id="resultsContainer"></div>
         </div>
     </div>
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/busquedas.js"></script>

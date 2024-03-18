@@ -29,22 +29,21 @@ $(document).ready(function(){
         var dropdown = $('#dropdownMenu');
         dropdown.empty().show();
         if (resultados && resultados.length > 0) {
-            //console.log('Mostrando resultados en el dropdown:', resultados);
             // Construir la tabla de resultados
-            var tableHtml = '<table class="table">';
+            var tableHtml = '<div class="table-responsive"><table class="table">';
             tableHtml += '<thead>';
             tableHtml += '<tr>';
-            tableHtml += '<th>Número de orden</th>';
-            tableHtml += '<th>Fecha</th>';
-            tableHtml += '<th>Descripción</th>';
-            tableHtml += '<th>Responsable</th>';
-            tableHtml += '<th>Establecimiento</th>';
+            tableHtml += '<th scope="col" style="width: 15%">Número de orden</th>';
+            tableHtml += '<th scope="col" style="width: 15%">Fecha</th>';
+            tableHtml += '<th scope="col" style="width: 35%">Descripción</th>';
+            tableHtml += '<th scope="col" style="width: 15%">Responsable</th>';
+            tableHtml += '<th scope="col" style="width: 35%">Establecimiento</th>';
             tableHtml += '</tr>';
             tableHtml += '</thead>';
             tableHtml += '<tbody>';
             $.each(resultados, function(i, resultado) {
-                tableHtml += '<tr class="fila-orden" data-numero="' + resultado.Numero_de_orden + '">';
-                tableHtml += '<td>' + resultado.Numero_de_orden + '</td>';
+                tableHtml += '<tr class="fila-orden" data-numero="' + resultado.ot_id + '">';
+                tableHtml += '<td>' + resultado.ot_id + '</td>';
                 tableHtml += '<td>' + resultado.Fecha + '</td>';
                 tableHtml += '<td>' + resultado.Descripcion + '</td>';
                 tableHtml += '<td>' + resultado.Responsable + '</td>';
@@ -52,9 +51,9 @@ $(document).ready(function(){
                 tableHtml += '</tr>';
             });
             tableHtml += '</tbody>';
-            tableHtml += '</table>';
+            tableHtml += '</table></div>';
             dropdown.append(tableHtml);
-
+    
             // Agregar evento de clic a las filas de la tabla
             $('.fila-orden').click(function() {
                 var numeroOrden = $(this).data('numero');
@@ -62,8 +61,8 @@ $(document).ready(function(){
                 dropdown.hide();
             });
         } else {
-            //console.log('No se encontraron resultados, mostrando mensaje en el dropdown.');
             dropdown.append('<a class="dropdown-item" href="#">No se encontraron resultados</a>');
         }
     }
+    
 });

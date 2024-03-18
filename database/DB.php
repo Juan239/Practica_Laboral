@@ -3,7 +3,7 @@ class DB {
     private $servidor = "localhost";
     private $usuario = "root";
     private $pass = "";
-    private $basedeDatos = "practica";
+    private $basedeDatos = "DAEM";
 
     public function connect() {
         $conn = new mysqli($this->servidor, $this->usuario, $this->pass, $this->basedeDatos);

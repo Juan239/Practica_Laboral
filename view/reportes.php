@@ -50,7 +50,6 @@
 </nav>
   </header>
   
-
   <!--
   <div class="container-fluid mt-4">
     <div class="row justify-content-center"> 
@@ -83,7 +82,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $ordenTrabajo = new ordenTrabajo("","","","","","","");
+                            $ordenTrabajo = new ordenTrabajo("","","","","","");
                             $ordenes = $ordenTrabajo->mostrarTabla();
 
                             // Paginación
@@ -102,13 +101,17 @@
                             for ($i = $indice_inicio; $i < $indice_fin && $i < count($ordenes); $i++) {
                                 $orden = $ordenes[$i];
                                 echo '<tr>';
-                                echo '<td>' . $orden['Numero_de_orden'] . '</td>';
+                                echo '<td>' . $orden['ot_id'] . '</td>';
                                 echo '<td>' . $orden['Fecha'] . '</td>';
                                 echo '<td>' . $orden['Descripcion'] . '</td>';
                                 echo '<td>' . $orden['Observaciones'] . '</td>';
                                 echo '<td>' . $orden['Responsable'] . '</td>';
                                 echo '<td>' . $orden['Establecimiento'] . '</td>';
                                 echo '<td>' . $orden['Intervencion'] . '</td>';
+
+                                
+
+                                echo "<td><a target=”_blank” href='../pdf.php?data=".urlencode(json_encode($orden))."'>Generar PDF</a></td>";
                                 echo '</tr>';
                             }
                         ?>

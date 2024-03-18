@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $usuarioModel->verificarCredenciales($nombre_usuario, $contrasena);
 
     if ($usuario) {
-        $_SESSION["id_usuario"] = $usuario["id_usuario"];
+        //Al cambiar de base de datos hay que cambiar el usr_id por el de la otra BD
+        $_SESSION["id_usuario"] = $usuario["usr_id"];
         $_SESSION["nombre_usuario"] = $nombre_usuario;
         header("Location: ../view/busqueda.php");
         exit();
