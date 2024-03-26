@@ -3,7 +3,6 @@ function selectOption(id, nombre) {
     document.getElementById("nombre_establecimiento_seleccionado").innerText = nombre;
 }
 
-
 function actualizarTextArea(textarea) {
     textarea.style.height = 'auto'; 
     textarea.style.height = textarea.scrollHeight + 'px';
@@ -23,13 +22,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-function obtenerFechaActual() {
-    var now = new Date();
-
-    var fechaActual = now.toISOString().slice(0, 10);
-
-    document.getElementById('fecha').value = fechaActual;
-  }
-  window.onload = obtenerFechaActual;

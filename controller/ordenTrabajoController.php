@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ordenTrabajo = new ordenTrabajo($fecha, $descripcion, $observaciones, $responsable, $establecimiento, $intervencion);
 
     if ($ordenTrabajo->registrarOrden()) {
-        header("Location: ../view/informes.php");
+        header("Location: ../view/main/seleccionInforme.php");
     } else {
         echo "Error al guardar la orden";
     }

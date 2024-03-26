@@ -1,5 +1,5 @@
 <?php
-require_once '../database/DB.php';
+require_once dirname(__FILE__) . '/../database/DB.php';
 
 class ordenTrabajo{
     //public $numeroOrden;

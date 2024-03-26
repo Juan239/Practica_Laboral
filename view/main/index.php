@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="fondoLogin">
@@ -25,12 +25,12 @@ if (isset($_SESSION["error_login"])) {
     <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
             <!--Falta colocar el action-->
-            <form method="post" action="../controller/usuarioController.php" class="formularioInicioSesion">     
+            <form method="post" action="../../controller/usuarioController.php" class="formularioInicioSesion">     
                 <h2 class="text-center">Bienvenido</h2><br>
                 <br>
                 <!-- Imagen municipalidad-->
                 <div class="form-group d-flex justify-content-center">
-                    <img src="images/logoMunicipalidad.webp" alt="Imagen de usuario" style="height: 300px;"> <!-- Ajusta la ruta y el tamaño según necesites -->
+                    <img src="../images/logoMunicipalidad.webp" alt="Imagen de usuario" style="height: 300px;"> <!-- Ajusta la ruta y el tamaño según necesites -->
                 </div>
                 
                 <!--Input del nombre de usuario-->
@@ -57,7 +57,7 @@ if (isset($_SESSION["error_login"])) {
 
 
 
-<script src="js/validaciones.js"></script>
+<script src="../js/validaciones.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

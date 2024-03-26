@@ -20,11 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Al cambiar de base de datos hay que cambiar el usr_id por el de la otra BD
         $_SESSION["id_usuario"] = $usuario["usr_id"];
         $_SESSION["nombre_usuario"] = $nombre_usuario;
-        header("Location: ../view/busqueda.php");
+        header("Location: ../view/main/busqueda.php");
         exit();
     } else {
         $_SESSION["error_login"] = "Usuario o contraseña incorrectos";
-        header("Location:../view/index.php");
+        header("Location:../viewmain/index.php");
     }
 
     $conexion->close();

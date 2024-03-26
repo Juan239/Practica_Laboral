@@ -1,5 +1,5 @@
 <?php
-require_once "../database/DB.php";
+require_once dirname(__FILE__) . '/../database/DB.php';
 
 // Verificar si la solicitud es mediante POST y si se proporcionó una consulta
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query'])) {
